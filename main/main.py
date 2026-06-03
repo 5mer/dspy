@@ -443,9 +443,9 @@ def update():
             player.patrsh.text=f"{player.invent[1].patr}/{player.patron[0]}"
     if str(stolk.entity) == 'fin':
         pausa = True
-        player.enabled = False          
-        mouse.locked = False            
-        mouse.visible = True            
+        player.enabled = False
+        mouse.locked = False
+        mouse.visible = True
         player.fin_menu=Entity(parent=camera.ui, model='quad', scale=(0.9, 0.9),color=color.black90)
         player.stats_text = Text(
         text=f'Победа!\nВремя: {player.time} сек\n Враги: {int(abs((len(enemy) - player.maxvr) / player.maxvr * 100))}%',
@@ -464,7 +464,7 @@ def update():
         )
 
     for i in enemy[:]:
-        if i.hp<=0 or i.dead:
+        if i.hp<=0 or i.dead or (player.world_position-i.world_position).length()>30:
             continue
         if (player.world_position-i.world_position).length()<10 and player.speed >6:
             i.obnor()
@@ -514,7 +514,6 @@ def input(key):
             if player.levpain>=25:player.levpain=20
             if player.levpain<=5:player.levpain=5
         player.imp(key)
-    else:player.imp("escape")
 player = Player(100, name="pel", collider='capsule', height=2, radius=0.5, scale=(1.3, 1.3, 1.3), speed=7, jump_height=3,position=[-8,2,-8],gravity = 0 )
 grid_size = player.levpain
 start_rom=[]
