@@ -677,5 +677,6 @@ def set_map():
     
 set_map()
 
+window.fullscreen = True
 
 ap.run()
