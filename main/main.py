@@ -514,7 +514,7 @@ def input(key):
             if player.levpain>=25:player.levpain=20
             if player.levpain<=5:player.levpain=5
         player.imp(key)
-    else:player.imp("escape")
+    elif player.hp == 0: player.imp("escape")
 player = Player(100, name="pel", collider='capsule', height=2, radius=0.5, scale=(1.3, 1.3, 1.3), speed=7, jump_height=3,position=[-8,2,-8],gravity = 0 )
 Entity(position=[-8,-0.69,-8],scale=2,collider="box",model='plane',texture='32')
 grid_size = player.levpain
